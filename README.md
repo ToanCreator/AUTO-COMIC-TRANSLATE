@@ -1,119 +1,212 @@
-# COMIC TRANS — Firefox add-on (v2.4.2)
+<div align="center">
 
-Dịch truyện tranh/webtoon ngay trên trang: gửi ảnh cho Gemini bằng key của bạn, **xoá chữ gốc theo từng nét chữ** rồi vẽ lại bản dịch. Viết lại từ đầu dựa trên các tính năng của userscript 1.6.0, với pipeline mới.
+<img src="icons/icon.svg" alt="COMIC TRANS logo" width="96" height="96">
 
-## Thay đổi 2.4.2
+# COMIC TRANS
 
-- **Đường nối mảnh trong ảnh** (vết nối thẳng 1–3px chạy suốt ảnh, hay gặp ở ảnh truyện tải về): chữ chạm vào đường này (như G, E, D, L, PE… ở cạnh mép bong bóng) từng bị dính vào đường nên không xoá được và bong bóng bị cắt đôi. Giờ add-on vá các đường mảnh dài này trước khi phân tích.
-- **Bong bóng viền "lông nhím"**: ranh giới bong bóng được xác định bằng viền đã nở rộng nên khe hở của viền không còn nối hai bong bóng; hai bong bóng nối nhau mà model trả thành một mục sẽ được tách bản dịch theo từng khối chữ. Các nét lông nhím rời sát viền không còn bị xoá nhầm như chữ.
-- **Khung lệch/nhỏ/quá to** được thử trên ảnh thật (lệch xuống, lệch lên, nửa trái, nửa phải, một dòng) — chữ gốc xoá sạch và bản dịch vẫn nằm giữa bong bóng.
-- **Đã bỏ ô "Cỡ chữ cố định (px)"**; cỡ chữ tự động theo chữ gốc, chỉnh bằng "Hệ số cỡ chữ tự động".
+**Translate comics, manga & webtoons right on the page — the original text is erased stroke by stroke, then the translation is redrawn in place.**
 
-## Thay đổi 2.3.0
+[![Version](https://img.shields.io/badge/version-2.3.0-blue?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+[![Free](https://img.shields.io/badge/price-free%20forever-brightgreen?style=flat-square)](#-free--open-source)
+[![Open Source](https://img.shields.io/badge/open%20source-%E2%9D%A4-red?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS)
+[![Dependencies](https://img.shields.io/badge/dependencies-0-success?style=flat-square)](#-tech-stack)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange?style=flat-square)](#-contributing)
 
-- **Tên và liên kết**: COMIC TRANS, https://github.com/ToanCreator/COMIC-TRANS.
-- **Không còn gộp dịch chung hai bong bóng**: mỗi bong bóng là một "túi nền" riêng (bị viền ngăn cách). Add-on chỉ xoá/lấy chữ trong túi của mục đang xử lý và không lấy chữ ở túi đã có mục khác đứng tên. Nếu model gộp hai bong bóng riêng thành một mục, bản dịch được chia theo từng bong bóng; nếu model trả hai mục riêng, mỗi mục giữ bản dịch của mình.
-- **Số/thanh phụ khác màu không bị xoá nhầm** (ví dụ số "36" trong thanh đậm hơn của bảng hệ thống): chỉ lan sang các nét chữ cùng màu nền cục bộ.
-- **Chữ không còn bị che/đè**: vùng đặt chữ dừng ngay khi chạm viền hoặc bất kỳ nét nào chưa xoá.
-- **Chữ quá nhỏ**: nhóm nhiễu không còn bị coi là một khối chữ riêng; cỡ chữ lấy theo khối chữ thật.
-- **Rà soát bản dịch** (Cài đặt → Ngôn ngữ, bật mặc định): thêm một yêu cầu chữ nhỏ để sửa từ vô nghĩa/sai chính tả/dùng sai từ (ví dụ "cho vai" → "cho vay"). Có thể tắt nếu muốn tiết kiệm lượt gọi API. Prompt dịch cũng yêu cầu chỉ dùng từ có thật, suy luận theo ngữ cảnh khi chữ khó đọc.
+**🌐 English** · [Tiếng Việt](README.vi.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-## Thay đổi 2.2.0
+<!-- ⬇️ Replace the links below with your real store URLs -->
+[![Get it for Firefox](https://img.shields.io/badge/Firefox-Get%20the%20add--on-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/YOUR-ADDON-SLUG/)
+[![Chrome](https://img.shields.io/badge/Chrome-Coming%20soon-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/YOUR-EXTENSION-ID)
+<!-- When the Chrome version is published, change "Coming%20soon" to "Get%20the%20extension" -->
 
-- **Đổi tên thành COMIC TRANS**; mô tả add-on bằng tiếng Anh. Mã định danh add-on giữ nguyên để không mất cài đặt/API key đã lưu.
-- **Chọn ngôn ngữ giao diện** (English, Tiếng Việt, 日本語, 中文) trong Cài đặt → Giao diện; áp dụng cho trang Cài đặt, bảng điều khiển nổi, menu chuột phải và thông báo lỗi. Mặc định theo ngôn ngữ trình duyệt.
-- **Nút credit** cuối trang Cài đặt: biểu tượng GitHub bên trái, chữ "ToanCreator", mở https://github.com/ToanCreator/COMIC-TRANS.
-- **Vẽ ảnh**: viền bong bóng không còn bị xoá nhầm khi khung của model to hơn bong bóng; bản dịch không đè lên viền, số hay chữ khác trong bảng; bong bóng nối nhau (một mục, hai khối chữ) được tách bản dịch theo từng khối; mục trùng (model trả cùng một chữ hai lần) bị loại; làm sạch vệt mờ quanh chữ gốc.
-- **Tiếng Việt không dấu**: prompt yêu cầu đủ dấu; nếu model vẫn trả câu không dấu, add-on gửi một yêu cầu chữ nhỏ để khôi phục dấu (và sửa luôn bản dịch đang nằm trong bộ nhớ đệm).
-- **Bảng thuật ngữ**: là danh sách thay thế theo nghĩa đen `gốc = dịch`. Quy tắc xưng hô giữa nhân vật (ví dụ Loy gọi Baron là "cha") ghi vào ô "Ghi chú cho người dịch", không ghi vào bảng thuật ngữ.
+</div>
 
-## Thay đổi 2.1.1
+---
 
-- **Sửa lỗi vẽ ảnh**: khung chữ Gemini trả về hay *nhỏ hơn chữ thật* hoặc *lệch xuống* nên chữ gốc bị xoá sót một nửa (còn "…SS IT'S A", dấu "?"), hoặc không xoá mà vẽ bản dịch đè bên dưới. Giờ add-on chỉ dùng khung làm "hạt giống", rồi tự lan theo các nét chữ sát nhau trong cùng bong bóng để xoá **toàn bộ** chữ gốc và đo lại vùng chữ thật (cỡ chữ, chỗ đặt bản dịch dựa trên vùng này).
-- Cửa sổ xử lý quanh mỗi khung rộng hơn; viền khử răng cưa của chữ to được xoá dày hơn (tránh bóng mờ).
-- Nếu model tách một bong bóng thành 2 mục, bản dịch được **gộp và vẽ một lần** (không còn hai bản dịch chồng lên nhau).
-- Prompt yêu cầu khung bao đủ ký tự đầu/cuối của mọi dòng (chọn rộng hơn thay vì hẹp hơn).
-- Ô dán API key: gợi ý đổi từ `AIza...` thành `AQ.Ab8RN6...` (key định dạng mới; add-on không giới hạn tiền tố key).
+<!-- 📸 Add a demo GIF or before/after screenshot here, e.g.:
+<p align="center"><img src="docs/demo.gif" alt="COMIC TRANS demo" width="720"></p>
+-->
 
-## Cài đặt
+## ✨ What is COMIC TRANS?
 
-**Dùng thử (mọi bản Firefox):**
-1. Mở `about:debugging#/runtime/this-firefox`
-2. Bấm **Load Temporary Add-on…** và chọn `manifest.json` trong thư mục đã giải nén (hoặc chọn file `.zip`).
-3. Tab Cài đặt tự mở. Dán key Gemini, bấm **Kiểm tra key**, rồi (tuỳ chọn) **Tải danh sách model từ key**.
+Most comic translators just paste a text box on top of the original lettering. **COMIC TRANS** goes further: it **detects the actual ink pixels of the original text, erases them, repairs the artwork underneath, and redraws the translation** so the page looks like it was published in your language.
 
-Add-on tạm thời sẽ mất khi tắt Firefox. Muốn cài vĩnh viễn: ký qua AMO (kênh *unlisted*, `web-ext sign`), hoặc dùng Firefox Developer Edition/Nightly với `xpinstall.signatures.required = false`. Khi đưa lên AMO cần khai thêm `data_collection_permissions` trong manifest (add-on gửi ảnh trang tới Google Gemini).
+You bring your own [Google Gemini](https://ai.google.dev/) API key. Everything else — image processing, text removal, typesetting, caching — runs **locally in your browser**.
 
-## Cách dùng (thiết kế cho điện thoại, máy tính vẫn dùng được)
+> Built mobile-first (Firefox for Android works), but it feels just as good on desktop.
 
-Trên trang có nhiều ảnh lớn, một **nút nổi tròn** tự hiện ở góc phải dưới (kéo để dời chỗ). Nếu không thấy, mở menu Firefox → Tiện ích → Auto Comic Translate.
-Chạm nút nổi để mở bảng điều khiển; khi đang dịch bảng tự thu lại, nút nổi hiện tiến độ `7/19` và chấm đỏ nếu có lỗi.
+## 🚀 Features
 
-- **Dịch cả trang**: ảnh đang xem được dịch trước, các ảnh khác chạy song song.
-- **Ảnh đang xem**: chỉ dịch ảnh đang ở giữa màn hình.
-- **Từ đây trở xuống**: dịch ảnh đang xem và mọi ảnh phía sau (hợp đọc webtoon).
-- **Chạm để chọn ảnh**: chạm vào ảnh nào thì dịch ảnh đó (không bị nhảy sang trang liên kết).
-- **Khoanh vùng**: kéo ngón tay quanh vùng có chữ; vùng được phóng to để đọc chữ nhỏ rồi gộp vào kết quả cũ.
-- **Tự dịch khi cuộn tới**: ảnh sắp cuộn tới được dịch trước.
-- **Xem gốc / Xuất PDF**.
-- Máy tính: `Alt+Shift+T` hiện/ẩn bảng, `Alt+Shift+Y` dịch cả trang, chuột phải lên ảnh → *Dịch ảnh này* (Firefox Android không có hai tính năng này).
+| | |
+|---|---|
+| 🧽 **Real text removal** | Erases the original lettering stroke by stroke, not with a blurry rectangle. Speech-bubble borders stay intact. |
+| 🖌️ **Smart typesetting** | The translation is fitted inside the bubble, stops at borders and untouched artwork, and never overlaps other text. |
+| 📜 **Webtoon-friendly** | Long strips are sliced at *empty rows between panels*, so lettering is never cut in half. |
+| ⚡ **Fast & parallel** | Per-key concurrency limits, automatic slow-down on HTTP 429 and automatic speed-up when things recover. Add several keys to multiply throughput. |
+| 📱 **Touch-first UI** | Floating button, tap-to-pick an image, finger-drawn selection to re-translate tiny text, 44px+ touch targets. |
+| 🔁 **Instant re-render** | Text regions are cached per image — change the font or size and the page redraws **without another API call**. |
+| 🧠 **Self-correcting** | Optional proofreading pass fixes nonsense words / typos; Vietnamese diacritics are auto-restored if the model drops them. |
+| 📖 **Glossary & tone notes** | Keep names consistent, define pronouns and speech style per series. |
+| 📄 **Export to PDF** | Save the translated chapter as a PDF (generated in-house, no PDF library). |
+| 🌍 **180+ languages** | Translate between any pair Gemini supports. UI in **English, Tiếng Việt, 日本語, 中文**. |
+| 🔒 **Private by design** | No account, no telemetry, no server of ours. See [Privacy](#-privacy--security). |
 
-## Khác gì so với userscript
+## 📦 Installation
 
-| | Userscript 1.6 | Bản này |
-|---|---|---|
-| Việc của Gemini | OCR + toạ độ + dịch + màu + tóm tắt + glossary, 9 trường mỗi khung | Chỉ toạ độ + bản dịch + loại khung (3 trường), schema ngắn |
-| Song song | 3 yêu cầu toàn cục, mỗi yêu cầu 3 lát ảnh | Giới hạn **riêng từng key**, 1 lát/yêu cầu, tự giảm khi 429 và tự tăng lại |
-| Cắt ảnh dài | Cắt theo chiều cao cố định | Cắt tại **hàng trống** giữa panel, không cắt ngang chữ |
-| Xoá chữ trong bong bóng | Heuristic + tô hình chữ nhật | Flood-fill nền, chỉ xoá các "đảo" chữ nằm trong ruột bong bóng, viền bong bóng giữ nguyên |
-| Xoá chữ ngoài bong bóng | Nội suy 4 cạnh hình chữ nhật (nhoè) | Tách riêng nét chữ (top-hat/black-hat) rồi điền lại + thêm hạt nhiễu cho khớp tranh |
-| Không chắc chắn | Vẫn tô | **Không đụng vào ảnh** nếu không tìm thấy chữ |
-| Xử lý ảnh | Luồng chính của trang | Web Worker (song song theo số nhân CPU), trang không bị đơ |
-| Cache | Không | Lưu vùng chữ từng ảnh; đổi phông/cỡ chữ là vẽ lại ngay, không gọi API |
+### Firefox (recommended)
 
-## Lỗi thường gặp
+1. Open the add-on page → **[Get COMIC TRANS for Firefox](https://addons.mozilla.org/firefox/addon/YOUR-ADDON-SLUG/)**
+2. Click **Add to Firefox**.
 
-- **`Gemini 400: Request contains an invalid argument`**: model không nhận một tuỳ chọn trong yêu cầu. Từ 2.1, add-on tự dò (tắt thinking → bỏ safety → bỏ schema) bằng một ảnh nhỏ trước khi dịch và chỉ báo lỗi khi model từ chối mọi cấu hình. Vào Cài đặt → **Kiểm tra đầy đủ** để xem cấu hình được chọn. Nếu vẫn lỗi, kiểm tra tên model bằng **Tải danh sách model từ key**.
-- **Các key đều "chờ 46s" (429)**: nhiều key tạo trong cùng một project dùng chung hạn mức. Add-on nhận ra điều này và chạy chậm lại; hãy tạo key ở các project khác nhau, hoặc giảm "yêu cầu song song mỗi key".
-- **`quota = 0 với model này`**: key chưa được cấp quota cho model đó (thường gặp với model không có bậc miễn phí). Đổi model.
-- Đừng chụp màn hình có lộ header `x-goog-api-key`; nếu lỡ lộ, hãy thu hồi và tạo key mới.
+### Chrome / Edge / Brave
 
-## Đã kiểm thử gì, chưa kiểm thử gì
+Coming soon — see the [Roadmap](#-roadmap). Track progress in the [issues](https://github.com/ToanCreator/COMIC-TRANS/issues).
 
-Đã chạy (thư mục `tests/`):
-- Thuật toán lõi trên trang truyện giả lập: bong bóng trắng, tối, khung phẳng, chữ viền trên tranh sọc, chữ đen trên nền nhạt, hai bong bóng sát nhau, bong bóng chuyển màu. Tất cả xoá sạch chữ gốc.
-- Worker thật, content script thật và luồng background→worker thật trong **Chromium** (Playwright), với Gemini được giả bằng phản hồi định sẵn: vẽ chữ, cắt webtoon vào đúng khe trắng, vùng chọn, PDF (mở được bằng pdf-lib), CSP chặn blob, tự dịch.
-- 21 test đơn vị + 15 test luồng (model từ chối thinking/safety/mọi cấu hình, quota 0, 429, JSON bị cắt, key sai, cache, 404; chạy cả khi thiếu `webRequest`/`commands`/`contextMenus` như Firefox Android).
-- 33 test giao diện trong Chromium giả lập điện thoại 390×844 với **cảm ứng thật** (chạm, kéo nút nổi, khoanh vùng bằng ngón tay, nút ≥ 44px, không tràn màn hình).
+### From source (any Firefox, for developers)
 
-**Chưa** kiểm thử: trên Firefox (cả máy tính lẫn Android) thật; với Gemini API thật; trên các trang đọc truyện thật; so tốc độ với comictranslator.com. Con số tốc độ phụ thuộc gói/hạn mức key và độ trễ của model, bảng điều khiển hiển thị thời gian, token và trạng thái từng key để bạn tự đo.
+```bash
+git clone https://github.com/ToanCreator/COMIC-TRANS.git
+```
 
-## Giới hạn đã biết
+1. Open `about:debugging#/runtime/this-firefox`
+2. Click **Load Temporary Add-on…** and select `manifest.json`
+3. The Settings tab opens automatically.
 
-- Chữ trực tiếp trên tranh nhiều chi tiết: nét chữ được xoá sạch nhưng chỗ điền lại hơi mờ (không có mô hình inpainting thần kinh). Tắt mục "Chữ nằm trực tiếp trên tranh" nếu không ưng.
-- Chưa xử lý riêng chữ xoay nghiêng/cong, chữ dính sát viền bong bóng; chữ dọc chỉ ước lượng cỡ.
-- Chỉ dùng phông cài trong máy; cần phông có dấu tiếng Việt (Noto Sans, Arial… đều ổn).
-- Ảnh nằm trong iframe chưa được hỗ trợ.
-- Model mặc định `gemini-3.5-flash-lite` giữ giống script cũ của bạn; nếu báo lỗi 404, dùng **Tải danh sách model từ key**.
-- Với key miễn phí, Google có thể dùng dữ liệu gửi lên theo điều khoản hiện hành của Gemini API. Hãy tự kiểm tra điều khoản.
+> Temporary add-ons are removed when Firefox closes. For a permanent install, use the store version or sign your own build with `web-ext sign`.
 
-## Gỡ lỗi
+## 🧭 Quick start
 
-`about:debugging` → *This Firefox* → add-on → **Inspect** để xem console của background (lỗi API, 429…). Console của trang (F12) hiện lỗi của content script.
+1. **Get a free Gemini API key** at [Google AI Studio](https://aistudio.google.com/apikey).
+2. Open **COMIC TRANS → Settings**, paste the key (one per line — more keys = more speed), press **Test key**.
+3. Pick your **source** and **target** language.
+4. Open any comic page and tap the **floating button** (bottom-right, draggable).
 
-## Chạy test
+| Mode | What it does |
+|---|---|
+| **Translate page** | Visible images first, the rest in parallel |
+| **Current image** | Only the image in the middle of the screen |
+| **From here down** | Current image + everything below — perfect for webtoons |
+| **Tap to pick** | Tap any image to translate just that one |
+| **Select area** | Draw around tiny text; the area is zoomed in and merged into the result |
+| **Auto-translate on scroll** | Upcoming images are translated before you reach them |
+| **View original / Export PDF** | Compare or save your work |
+
+**Desktop shortcuts:** `Alt+Shift+T` show/hide panel · `Alt+Shift+Y` translate page · right-click an image → *Translate this image*.
+
+## ⚙️ How it works
+
+```mermaid
+flowchart LR
+    A["Comic page<br/>(many large images)"] --> B["Content script<br/>detect images · floating UI"]
+    B --> C["Background<br/>fetch · slice at quiet rows"]
+    C --> D["Gemini API<br/>boxes + translation"]
+    D --> E["Web Worker<br/>find ink · erase · typeset"]
+    E --> F["Translated image<br/>replaced in place"]
+    E -. "cache regions" .-> C
+```
+
+1. **Detect** — the content script finds comic-sized images (including lazy-loaded ones) and shows a lightweight Shadow-DOM control panel that can't clash with the site's CSS.
+2. **Slice** — long strips are cut at the quietest horizontal rows between panels, not at fixed heights.
+3. **Ask the model for *less*** — Gemini only returns what a vision model is good at: **text boxes, the translation, and a bubble type** (3 fields). Heavy lifting stays on-device.
+4. **Find the real ink** — the model's boxes are often too small or shifted, so they are used only as *seeds*. The Worker grows them along neighbouring strokes inside the same speech bubble (flood-fill on the local background; top-hat / black-hat morphology for text on artwork) to get the full lettering mask.
+5. **Erase** — pixels inside the mask are inpainted (push-pull fill + matched film grain), so edits blend with the artwork. If no text is found, **the image is left untouched**.
+6. **Typeset** — the translation is wrapped and fitted into the free area of the bubble, stopping before borders or any ink that wasn't erased.
+7. **Cache** — regions are saved per image; restyling is instant and free.
+
+## 🛠️ Engineering highlights
+
+*For the curious — and for anyone reviewing the code.*
+
+- **Zero dependencies.** Vanilla JavaScript (ES2020), WebExtension APIs, Web Workers. No bundler, no framework, no `node_modules` at runtime.
+- **Pure, testable core.** `worker/core.js` has no DOM access, so the same algorithms run in a Web Worker **and** in Node for tests.
+- **Computer-vision pipeline from scratch.** Dominant-colour analysis, row/column ink statistics, morphological opening/closing, connected-component grouping, push-pull inpainting, noise estimation + grain synthesis, IoU de-duplication.
+- **Resilient API client.** Probes what each model accepts (thinking → safety → JSON-schema) with a tiny test image and degrades gracefully; salvages truncated JSON; handles 429 with per-key adaptive concurrency; detects keys that share a quota project.
+- **Never blocks the page.** Heavy pixel work runs in a pool of Workers sized to the CPU core count.
+- **Own PDF writer.** The chapter export is generated by a small hand-written PDF serializer.
+- **i18n from day one.** Four UI languages, auto-detected from the browser.
+- **Tested in layers.** Algorithm tests on synthetic comic pages, unit & flow tests (model refusals, quota 0, 429, truncated JSON, bad key, 404, missing optional permissions), and real-browser E2E / touch-UI tests with Playwright in a mobile viewport.
+
+## 🔒 Privacy & security
+
+- Your **API key is stored only in your browser** (`browser.storage.local`) and is sent **only** to `generativelanguage.googleapis.com`.
+- The extension talks to **no other server** — no analytics, no tracking, no account.
+- ⚠️ To translate, **the images you choose are sent to Google's Gemini API**. Google's terms for your key's plan apply (free-tier data may be used by Google per their current policy — please read it). Don't translate content you aren't comfortable sending.
+- Never share screenshots exposing the `x-goog-api-key` header. If a key leaks, revoke it and create a new one.
+
+## 🧰 Tech stack
+
+`JavaScript` · `WebExtensions (Firefox, Manifest V2)` · `Web Workers` · `Canvas / ImageData` · `Google Gemini API` · `Node.js + Playwright (tests)`
+
+## 🗂️ Project structure
 
 ```
+COMIC-TRANS/
+├── manifest.json          # WebExtension manifest
+├── background/
+│   ├── main.js            # orchestration: fetch, slice, queue, cache, per-key concurrency
+│   ├── gemini.js          # Gemini client: prompts, parsing, retries, self-test
+│   └── settings.js        # defaults & storage
+├── content/content.js     # image detection, floating panel (Shadow DOM), touch gestures, PDF export
+├── worker/
+│   ├── core.js            # pure algorithms: ink mask, inpainting, typesetting, slicing
+│   └── worker.js          # Web Worker wrapper
+├── options/               # settings page
+├── shared/                # i18n strings (en/vi/ja/zh) & language list
+└── tests/                 # unit, flow, algorithm and browser E2E tests
+```
+
+## 🧪 Development & tests
+
+```bash
 cd tests
-python3 make_synth.py && python3 make_tall.py && python3 make_widths.py
-python3 make_misbox.py && node test_misbox.js && node test_merge.js && python3 make_cases2.py && node test_cases2.js && python3 make_cases3.py && node test_cases3.js && python3 make_fuzzy.py && NOTEXT=1 python3 make_fuzzy.py && node test_fuzzy.js   # khung model nhỏ/lệch/quá to + gộp bong bóng bị tách
-node test_units.js && node test_flow.js && node run_core.js   # run_core cần synth.json/widths.json ở trên
-node browser_worker_test.js && node browser_content_test.js && node browser_e2e_test.js   # cần playwright + chromium
+python3 make_synth.py && python3 make_tall.py && python3 make_widths.py   # synthetic comic pages
+node test_units.js && node test_flow.js && node run_core.js               # unit + flow + core
+node browser_worker_test.js && node browser_content_test.js && node browser_e2e_test.js  # needs Playwright + Chromium
 ```
 
-## Hướng phát triển tiếp
+> **Honest status:** automated tests ran against the real Worker, content script and background flow in **Chromium** with Gemini mocked. Testing on real Firefox (desktop & Android), the live Gemini API and many real manga sites is ongoing — bug reports are very welcome.
 
-1. Inpainting thần kinh (LaMa dạng ONNX qua `onnxruntime-web`/WebGPU) cho chữ trên tranh, cắm vào `fillHoles` mà không đổi phần còn lại.
-2. Chế độ máy chủ riêng (detector + OCR + LaMa trên GPU), Gemini chỉ dịch văn bản.
-3. Streaming phản hồi để bắt đầu vẽ trước khi model trả xong.
-4. Bản Chrome (Manifest V3, offscreen document).
+## ⚠️ Known limitations
+
+- Text drawn directly over highly detailed artwork is erased cleanly but the fill can look slightly soft (no neural inpainting yet — turn off *"Text directly on artwork"* if you prefer).
+- Rotated / curved text and lettering glued to bubble borders are not handled specially; vertical text is only size-estimated.
+- Only fonts installed on your system are used (choose one with the glyphs your target language needs).
+- Images inside `<iframe>`s are not supported yet.
+
+## 📍 Roadmap
+
+- [ ] 🟦 **Chrome / Edge / Brave** version (Manifest V3, offscreen document)
+- [ ] 🧠 Neural inpainting (LaMa via `onnxruntime-web` / WebGPU) for text on artwork
+- [ ] 🖥️ Optional self-hosted mode (detector + OCR + inpainting on GPU; Gemini translates text only)
+- [ ] ⏩ Streaming responses so drawing starts before the model finishes
+- [ ] 🌐 More UI languages (PRs welcome!)
+
+## 🤝 Contributing
+
+Contributions of any size are welcome — bug reports, new UI translations, algorithm improvements, docs.
+
+1. Fork the repo and create a branch: `git checkout -b feature/my-idea`
+2. Make your change and run the tests in `tests/`
+3. Open a Pull Request describing *what* and *why*
+
+**Translate this README or the UI:** copy `README.md` to `README.<lang>.md` (for example `README.ko.md`) and add it to the language bar at the top; UI strings live in `shared/i18n.js`.
+
+## 💚 Free & open source
+
+COMIC TRANS is **100% free** — no ads, no paywall, no premium tier — and **open source** under the **MIT License**. Read it, fork it, learn from it, improve it. You only pay Google directly for API usage *if* you exceed your plan's free quota.
+
+## 📄 License
+
+Released under the [MIT License](LICENSE). Comics and webtoons you translate remain the property of their creators — please support the original authors and respect copyright and each site's terms of use.
+
+## 👤 Author
+
+Made with ☕ by **[ToanCreator](https://github.com/ToanCreator)**.
+If this project helped you, a ⭐ on the repo means a lot!
+
+<div align="center">
+
+[⬆ Back to top](#comic-trans)
+
+</div>
