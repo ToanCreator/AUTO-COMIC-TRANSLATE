@@ -6,7 +6,7 @@
 
 **漫画・マンガ・縦読みウェブトゥーンをページ上でそのまま翻訳。元の文字を一画ずつ消して、訳文をその場に描き直します。**
 
-[![バージョン](https://img.shields.io/badge/version-2.3.0-blue?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS/releases)
+[![バージョン](https://img.shields.io/badge/version-2.4.2-blue?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS/releases)
 [![ライセンス: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![無料](https://img.shields.io/badge/%E4%BE%A1%E6%A0%BC-%E7%84%A1%E6%96%99-brightgreen?style=flat-square)](#-無料オープンソース)
 [![オープンソース](https://img.shields.io/badge/open%20source-%E2%9D%A4-red?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS)
@@ -16,7 +16,7 @@
 [English](README.md) · [Tiếng Việt](README.vi.md) · [简体中文](README.zh-CN.md) · **🌐 日本語**
 
 <!-- ⬇️ 下のリンクを実際のストアの URL に置き換えてください -->
-[![Firefox 版を入手](https://img.shields.io/badge/Firefox-%E3%82%A2%E3%83%89%E3%82%AA%E3%83%B3%E3%82%92%E5%85%A5%E6%89%8B-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/YOUR-ADDON-SLUG/)
+[![Firefox 版を入手](https://img.shields.io/badge/Firefox-%E3%82%A2%E3%83%89%E3%82%AA%E3%83%B3%E3%82%92%E5%85%A5%E6%89%8B-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/comic-trans/)
 [![Chrome](https://img.shields.io/badge/Chrome-%E8%BF%91%E6%97%A5%E5%85%AC%E9%96%8B-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/YOUR-EXTENSION-ID)
 <!-- Chrome 版の公開後、"%E8%BF%91%E6%97%A5%E5%85%AC%E9%96%8B"（近日公開）を "%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%82%92%E5%85%A5%E6%89%8B"（拡張機能を入手）に変更 -->
 
