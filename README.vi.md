@@ -24,9 +24,7 @@
 
 ---
 
-<!-- 📸 Thêm ảnh GIF demo hoặc ảnh trước/sau tại đây, ví dụ:
-<p align="center"><img src="docs/demo.gif" alt="Demo COMIC TRANS" width="720"></p>
--->
+<p align="center"><img src="Docs/demo.gif" alt="Demo COMIC TRANS" width="720"></p>
 
 ## ✨ COMIC TRANS là gì?
 
