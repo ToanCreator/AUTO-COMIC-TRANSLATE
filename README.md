@@ -24,9 +24,7 @@
 
 ---
 
-<!-- 📸 Add a demo GIF or before/after screenshot here, e.g.:
-<p align="center"><img src="docs/demo.gif" alt="COMIC TRANS demo" width="720"></p>
--->
+<p align="center"><img src="Docs/demo.gif" alt="COMIC TRANS demo" width="720"></p>
 
 ## ✨ What is COMIC TRANS?
 
