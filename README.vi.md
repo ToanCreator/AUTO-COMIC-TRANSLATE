@@ -6,7 +6,7 @@
 
 **Dịch truyện tranh, manga và webtoon ngay trên trang web — chữ gốc được xoá theo từng nét, bản dịch được vẽ lại đúng chỗ.**
 
-[![Phiên bản](https://img.shields.io/badge/version-2.3.0-blue?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS/releases)
+[![Phiên bản](https://img.shields.io/badge/version-2.4.2-blue?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS/releases)
 [![Giấy phép: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Miễn phí](https://img.shields.io/badge/gi%C3%A1-mi%E1%BB%85n%20ph%C3%AD-brightgreen?style=flat-square)](#-miễn-phí--mã-nguồn-mở)
 [![Mã nguồn mở](https://img.shields.io/badge/open%20source-%E2%9D%A4-red?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS)
@@ -16,7 +16,7 @@
 [English](README.md) · **🌐 Tiếng Việt** · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
 <!-- ⬇️ Thay các liên kết bên dưới bằng đường dẫn thật trên cửa hàng tiện ích -->
-[![Tải cho Firefox](https://img.shields.io/badge/Firefox-T%E1%BA%A3i%20ti%E1%BB%87n%20%C3%ADch-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/YOUR-ADDON-SLUG/)
+[![Tải cho Firefox](https://img.shields.io/badge/Firefox-T%E1%BA%A3i%20ti%E1%BB%87n%20%C3%ADch-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/comic-trans/)
 [![Chrome](https://img.shields.io/badge/Chrome-S%E1%BA%AFp%20ra%20m%E1%BA%AFt-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/YOUR-EXTENSION-ID)
 <!-- Khi bản Chrome được phát hành, đổi "S%E1%BA%AFp%20ra%20m%E1%BA%AFt" thành "T%E1%BA%A3i%20ti%E1%BB%87n%20%C3%ADch" -->
 
