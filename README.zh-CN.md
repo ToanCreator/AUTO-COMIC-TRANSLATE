@@ -24,9 +24,7 @@
 
 ---
 
-<!-- 📸 在此添加演示 GIF 或前后对比截图，例如：
-<p align="center"><img src="docs/demo.gif" alt="COMIC TRANS 演示" width="720"></p>
--->
+<p align="center"><img src="Docs/demo.gif" alt="Demo COMIC TRANS" width="720"></p>
 
 ## ✨ COMIC TRANS 是什么？
 
