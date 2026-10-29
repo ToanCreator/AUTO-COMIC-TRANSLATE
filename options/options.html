@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COMIC TRANS</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+<header>
+  <h1>COMIC TRANS</h1>
+  <p data-i18n="tagline"></p>
+  <span id="saved" role="status" aria-live="polite"></span>
+  <label class="lang-pick" data-i18n-title="o_uilang">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4.2" ry="9.5"/><path d="M2.5 12h19M4.2 7h15.6M4.2 17h15.6"/></svg>
+    <span class="lang-code" id="langCode" aria-hidden="true"></span>
+    <select id="uiLang" data-k="uiLang" data-i18n-aria="o_uilang">
+      <option value="en">English</option>
+      <option value="vi">Tiếng Việt</option>
+      <option value="ja">日本語</option>
+      <option value="zh">中文</option>
+    </select>
+  </label>
+</header>
+
+<main>
+  <section class="panel wide">
+    <h2 data-i18n="o_keys_h"></h2>
+    <p class="hint" data-i18n-html="o_keys_hint"></p>
+    <textarea id="keys" data-k="keys" rows="4" spellcheck="false" autocomplete="off" placeholder="AQ.Ab8RN6..."></textarea>
+    <div class="actions">
+      <button id="testKeys" type="button" data-i18n="o_test_keys"></button>
+      <span id="keyRes" class="res" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 data-i18n="o_model_h"></h2>
+    <label><span data-i18n="o_model"></span>
+      <input id="model" data-k="model" list="models" spellcheck="false" autocomplete="off">
+      <datalist id="models"></datalist>
+    </label>
+    <div class="actions"><button id="listModels" type="button" data-i18n="o_list_models"></button><span id="modelRes" class="res"></span></div>
+    <div class="actions"><button id="selfTest" type="button" data-i18n="o_self_test"></button><span id="selfRes" class="res" role="status" aria-live="polite"></span></div>
+    <p class="hint" data-i18n="o_self_hint"></p>
+    <label><span data-i18n="o_per_key"></span>
+      <select data-k="perKey" data-num>
+        <option>2</option><option>3</option><option>4</option><option>6</option><option>8</option><option>12</option>
+      </select>
+    </label>
+    <p class="hint" data-i18n="o_per_key_hint"></p>
+    <label><span data-i18n="o_quality"></span>
+      <select data-k="quality">
+        <option value="fast" data-i18n="o_q_fast"></option>
+        <option value="balanced" data-i18n="o_q_bal"></option>
+        <option value="accurate" data-i18n="o_q_acc"></option>
+      </select>
+    </label>
+  </section>
+
+  <section class="panel">
+    <h2 data-i18n="o_lang_h"></h2>
+    <label><span data-i18n="o_src"></span> <select id="src" data-k="src"></select></label>
+    <label><span data-i18n="o_dst"></span> <select id="dst" data-k="dst"></select></label>
+    <label class="check"><input type="checkbox" data-k="keepNames"> <span data-i18n="o_keep"></span></label>
+    <label class="check"><input type="checkbox" data-k="proofread"> <span data-i18n="o_proof"></span></label>
+    <label><span data-i18n="o_extra"></span>
+      <textarea data-k="extra" rows="4" data-i18n-ph="o_extra_ph"></textarea>
+    </label>
+  </section>
+
+  <section class="panel">
+    <h2 data-i18n="o_text_h"></h2>
+    <label><span data-i18n="o_font"></span>
+      <select id="font" data-k="font"></select>
+    </label>
+    <label id="customWrap" hidden><span data-i18n="o_font_custom"></span>
+      <input data-k="fontCustom" spellcheck="false" data-i18n-ph="o_font_custom_ph">
+    </label>
+    <label><span data-i18n="o_scale"></span>
+      <select data-k="sizeScale" data-num>
+        <option value="0.85" data-i18n="o_s085"></option><option value="1" data-i18n="o_s1"></option><option value="1.15" data-i18n="o_s115"></option><option value="1.3" data-i18n="o_s13"></option>
+      </select>
+    </label>
+    <label class="check"><input type="checkbox" data-k="bold"> <span data-i18n="o_bold"></span></label>
+  </section>
+
+  <section class="panel">
+    <h2 data-i18n="o_types_h"></h2>
+    <label class="check"><input type="checkbox" data-k="freeText"> <span data-i18n="o_free"></span></label>
+    <label class="check"><input type="checkbox" data-k="sfx"> <span data-i18n="o_sfx"></span></label>
+    <p class="hint" data-i18n="o_types_hint"></p>
+  </section>
+
+  <section class="panel wide">
+    <h2 data-i18n="o_ui_h"></h2>
+    <label class="check"><input type="checkbox" data-k="autoFab"> <span data-i18n="o_autofab"></span></label>
+    <p class="hint" data-i18n="o_ui_hint"></p>
+  </section>
+
+  <section class="panel wide">
+    <h2 data-i18n="o_gloss_h"></h2>
+    <p class="hint" data-i18n-html="o_gloss_hint"></p>
+    <textarea data-k="glossary" rows="4" spellcheck="false" data-i18n-ph="o_gloss_ph"></textarea>
+  </section>
+
+  <section class="panel wide">
+    <h2 data-i18n="o_cache_h"></h2>
+    <p class="hint" data-i18n="o_cache_hint"></p>
+    <div class="actions"><button id="clear" type="button" data-i18n="o_clear"></button><span id="clearRes" class="res" role="status"></span></div>
+  </section>
+</main>
+
+<footer class="credit-bar">
+  <span id="creditLabel" data-i18n="o_credit"></span>
+  <a class="credit" id="credit" href="https://github.com/ToanCreator/COMIC-TRANS" target="_blank" rel="noopener noreferrer" data-i18n-title="o_credit_title">
+    <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    <span>ToanCreator</span>
+  </a>
+</footer>
+
+<script src="../shared/langs.js"></script>
+<script src="../shared/i18n.js"></script>
+<script src="../background/settings.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

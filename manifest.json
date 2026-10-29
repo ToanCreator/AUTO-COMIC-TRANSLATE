@@ -1,0 +1,72 @@
+{
+  "manifest_version": 2,
+  "name": "COMIC TRANS",
+  "version": "2.4.2",
+  "description": "Translate comics and webtoons right on the page with Gemini: erase the original text and redraw the translation. Bring your own API key.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "auto-comic-translate@toancreator.local",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": {
+        "required": ["websiteContent"]
+      }
+    }
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "permissions": [
+    "<all_urls>",
+    "storage",
+    "unlimitedStorage",
+    "webRequest",
+    "webRequestBlocking",
+    "contextMenus"
+  ],
+  "background": {
+    "scripts": [
+      "shared/i18n.js",
+      "background/settings.js",
+      "background/gemini.js",
+      "background/main.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "shared/i18n.js",
+        "content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_action": {
+    "default_title": "COMIC TRANS",
+    "default_icon": {
+      "48": "icons/icon.svg"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "commands": {
+    "toggle-panel": {
+      "suggested_key": {
+        "default": "Alt+Shift+T"
+      },
+      "description": "Show/hide the COMIC TRANS panel"
+    },
+    "translate-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+Y"
+      },
+      "description": "Translate the whole page"
+    }
+  }
+}
