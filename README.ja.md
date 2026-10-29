@@ -24,9 +24,7 @@
 
 ---
 
-<!-- 📸 ここにデモ GIF またはビフォー/アフター画像を追加してください。例：
-<p align="center"><img src="docs/demo.gif" alt="COMIC TRANS デモ" width="720"></p>
--->
+<p align="center"><img src="Docs/demo.gif" alt="Demo COMIC TRANS" width="720"></p>
 
 ## ✨ COMIC TRANS とは？
 
