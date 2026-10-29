@@ -6,7 +6,7 @@
 
 **在网页上直接翻译漫画、日漫和条漫——逐笔擦除原文，再把译文原位重绘。**
 
-[![版本](https://img.shields.io/badge/version-2.3.0-blue?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS/releases)
+[![版本](https://img.shields.io/badge/version-2.4.2-blue?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS/releases)
 [![许可证: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![免费](https://img.shields.io/badge/%E4%BB%B7%E6%A0%BC-%E5%85%8D%E8%B4%B9-brightgreen?style=flat-square)](#-免费与开源)
 [![开源](https://img.shields.io/badge/open%20source-%E2%9D%A4-red?style=flat-square)](https://github.com/ToanCreator/COMIC-TRANS)
@@ -16,7 +16,7 @@
 [English](README.md) · [Tiếng Việt](README.vi.md) · **🌐 简体中文** · [日本語](README.ja.md)
 
 <!-- ⬇️ 请把下面的链接替换为真实的商店地址 -->
-[![获取 Firefox 版](https://img.shields.io/badge/Firefox-%E8%8E%B7%E5%8F%96%E6%89%A9%E5%B1%95-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/YOUR-ADDON-SLUG/)
+[![获取 Firefox 版](https://img.shields.io/badge/Firefox-%E8%8E%B7%E5%8F%96%E6%89%A9%E5%B1%95-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/comic-trans/)
 [![Chrome](https://img.shields.io/badge/Chrome-%E5%8D%B3%E5%B0%86%E6%8E%A8%E5%87%BA-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/YOUR-EXTENSION-ID)
 <!-- Chrome 版发布后，把 "%E5%8D%B3%E5%B0%86%E6%8E%A8%E5%87%BA"（即将推出）改为 "%E8%8E%B7%E5%8F%96%E6%89%A9%E5%B1%95"（获取扩展） -->
 
